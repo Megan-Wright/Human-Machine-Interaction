@@ -9,6 +9,7 @@ import sys
 import time
 import ev3dev.ev3 as ev3
 
+
 # state constants
 ON = True
 OFF = False
@@ -63,40 +64,56 @@ def main():
     # set the motor variables
     mb = ev3.LargeMotor('outB')
     mc = ev3.LargeMotor('outC')
-    sp = -25
-
+    sp = 30
+    delta = 30
     # set the ultrasonic sensor variable
     us3 = ev3.UltrasonicSensor('in3')
 
-    # program loop
-    for x in range (1, 5):
-        
-        # fetch the distance
-        ds = us3.value()
-            
-        # display the distance on the screen of the device
-        print('Distance =',ds)
-
-        # print the distance to the output panel in VS Code
-        debug_print('Distance =',ds)
-        
-        # announce the distance
-        ev3.Sound.speak(ds).wait()
-
-        # move
-        mb.run_direct(duty_cycle_sp=sp)
-        mc.run_direct(duty_cycle_sp=sp)
-        time.sleep(1)
-
-        # stop
-        mb.run_direct(duty_cycle_sp=0)
-        mc.run_direct(duty_cycle_sp=0)
-        
-        # reverse direction
-        sp = -sp
+    # # program loop
+    # for x in range (1, 5):
     
-    # announce program end
-    ev3.Sound.speak('Test program ending').wait()
+        
+    # display the distance on the screen of the device
+    # print('Distance =',ds)
+
+    # print the distance to the output panel in VS Code
+    # debug_print('Distance =',ds)
+    # ds = us3.value()
+    # announce the distance
+    # ev3.Sound.speak(ds).wait()
+
+    # move
+    # mb.run_direct(duty_cycle_sp=sp)
+    # mc.run_direct(duty_cycle_sp=sp)
+    # time.sleep(0.)
+    counter = 0
+    all_values = 0
+    total = 0
+    for x in range(1,1000):
+        counter += 1
+        ds = us3.value()
+        # debug_print('Distance =',ds)
+        all_values += ds
+        total += (ds)**2
+        time.sleep(0.01)
+    total = total/counter
+   
+    mean = all_values/counter
+    standard_dev = total - mean
+    
+    debug_print(mean)
+    debug_print(standard_dev)
+
+
+    #     # stop
+    #     mb.run_direct(duty_cycle_sp=0)
+    #     mc.run_direct(duty_cycle_sp=0)
+        
+    #     # reverse direction
+    #     sp = -sp
+    
+    # # announce program end
+    # ev3.Sound.speak('Test program ending').wait()
 
 if __name__ == '__main__':
     main()

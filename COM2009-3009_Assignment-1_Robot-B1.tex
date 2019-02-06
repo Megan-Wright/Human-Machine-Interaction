@@ -38,20 +38,20 @@
 
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 % DELETE (OR COMMENT OUT) THESE TWO LINES
-{\huge \bfseries Instructions}\\[0.5cm]
-{\Large Prof. Roger K. Moore \& Dr. Mike Mangan}\\[1cm]
+%{\huge \bfseries Instructions}\\[0.5cm]
+%{\Large Prof. Roger K. Moore \& Dr. Mike Mangan}\\[1cm]
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 % EDIT YOUR NAMES (AND UNCOMMENT)
-%{\Large John Smith}\\
-%{\Large David Jones}\\
-%{\Large Scott Macdonald}\\[1cm]
+{\Large Megan Wright}\\
+{\Large Rafael Cavagnoli}\\
+{\Large Sohyun Park}\\[1cm]
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 % EDIT THE ID OF YOUR ROBOT (AND UNCOMMENT)
-%{\LARGE Robot: XY}\\[1cm]
+{\LARGE Robot: B1}\\[1cm]
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 {\LARGE Department of Computer Science}\\
@@ -68,222 +68,222 @@
 % DELETE (OR COMMENT OUT) THE OVERVIEW & GETTING STARTED SECTIONS BELOW
 %vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
-\section{Overview (please read carefully)}
-
-The lab classes for COM2009-3009 take place in Computer Room 3 in the Diamond (DIA-CR3) from 13:00 to 14:50 on Mondays (for Group A) and 09:00 to 10:50 on Wednesdays (for Group B).  The aim of the first assignment (weeks 1 to 6) is for you to gain practical hands-on experience in designing, implementing and evaluating a robot's behaviour.  In particular, you will be working with a Lego Mindstorms EV3 robot (i) to investigate various control strategies (especially `closed-loop control'), and (ii) to use the knowledge gained to implement a robot capable of competing in a maze-running task.  You will be assessed on a group report that is to be handed-in before {\color {red} \textbf{midnight Friday 15th March 2019}}.
-
-
-\subsection{Logistics}
-
-You will work in teams of three (assigned randomly, as per University policy), and each team has been allocated a particular robot.  See the list on MOLE to find your partners and robot.
-
-Four PhD student demonstrators will be in attendance to provide help and advice: Ben Hawker, Zeke Hobbs, Blayze Millward and Aryan Mohammadi Pasikhani.
-
-{\bfseries Note:}  \emph{The demonstrators' role is to help with your learning, NOT to debug your programs.}
-
-The Lego EV3 robots are located in charging cabinets in DIA-CR3.  There are 80 robots available and they are each identified with a letter and a digit.  COM2009-3009 will be using robots A to E, as robots F to J are being used by COM1003.  The letter identifies the cabinet that contains the robot.  The robot kit consists of a microcomputer - known as the ``brick'' - and a box of components that contains a chassis configured as a three-wheeled `Driving Base'.  You simply slot the brick on top of the chassis and connect the required motors and sensors using the black cables.
-
-The cabinets will be opened by the Diamond staff (who wear purple shirts) at the beginning of each lab session.  The cabinets are located alphabetically in an anticlockwise arrangement around DIA-CR3.
-
-{\bfseries Note:}  \emph{You may \underline{not} take a robot out of DIA-CR3 under any circumstances!}
-
-{\bfseries Note:}  \emph{Please be careful in and around the robot arena; the robots can move unexpectedly and the arena itself is high enough to be a trip hazard.  There is a risk assessment for this in the folder on the teaching podium.}
-
-At the end of each lab session, turn off your robot and return it to the correct charging cabinet, with the microcomputer (brick) being placed on charge by plugging in the power adapter in the centre section of the cabinet.
-
-{\bfseries Note:}  \emph{If you have customised your robot, take a photo (as a memory aid) and return it to its original `Driving Base' configuration and place all the Lego back in its box.  This is necessary because the robots are shared between Group A and Group B.}
-
-
-\subsection{The Assignment}
-
-As mentioned above, this assignment consists of two parts: Part I - an investigation of the properties and behaviour of open-loop \emph{vs.} closed-loop control strategies, and Part II - the design and implementation of a robot which you will enter into a maze-running competition.  See the following sections for details.
-
-\textbf{It is important that you complete Part I of the assignment well before the end of the third lab session.}  This will give you plenty of time to optimise your entry for the maze-running competition in Part II.  The competition itself will take place in week 6 (11th March for Group A and 13th March for Group B).
-
-{\bfseries Note:}  \emph{Despite our best efforts, so far it has NOT been possible to arrange access to the robots outside the timetabled lab sessions.  So it is VERY important that you make full use of the scheduled lab sessions.}
-
-
-\subsection{Assessment}
-
-This lab assignment is worth 25\% of the overall mark for COM2009-3009.  Each group should submit a report using these instructions as a guide.  There are 17 questions to be answered in the report, with different marks assigned to each question.  The total adds up to 100 marks.
-
-
-\subsection{Report Submission}
-
-Your report should be submitted as a single \texttt{.pdf} file to MOLE.  You do NOT need to submit a paper copy.   Please make sure that your names and the id of your robot are shown correctly on the front page of your report.  The next section explains how to do this.
-
-The deadline is {\color{red}{\bfseries midnight Friday 15th March 2019}}.
-
-{\bfseries Note:}  \emph{Each team should submit \underline{one} report, so you'll need to select one member of your team to submit it to MOLE.}
-
-
-\subsection{About this Document}
-
-This document not only provides the instructions for your first COM2009-3009 lab assignment, but it is also the \emph{template} for your report.  The \texttt{.pdf} was produced using \LaTeX\ (pronounced ``\emph{lah-tech}'' or ``\emph{lay-tech}''), which is a \emph{free} document preparation system for high-quality typesetting\footnote{You can find out more about \LaTeX\ here: \url{https://www.latex-project.org}.} .  \LaTeX\ includes features designed for the production of technical and scientific documentation, so it is the de-facto standard for the publication of scientific/technical papers and reports.  Unlike WYSIWYG (``\emph{What You See Is What You Get}'') word processors (such as \emph{Microsoft Word} or \emph{OpenOffice}), \LaTeX\ is based on plain-text source files containing html-style markup which are compiled into a typeset document.  This separation of `content' from `style' facilitates the production of very professional scientific documents in terms of their consistency, readability and design.
-
-Having a working knowledge of \LaTeX\ is a key skill for any computer scientist, and the Department strongly recommends that you consider using it for your 3rd-year Dissertation\footnote{Prof.\ Moore can supply a template on request.}.  \LaTeX\ is very easy to learn\footnote{A particularly good introduction can be found at \url{https://www.sharelatex.com/learn/Learn_LaTeX_in_30_minutes}.}, and there are many resources available on the web.
-
-\LaTeX\ distributions are available for Linux, Mac OSX and Windows\footnote{\url{https://www.latex-project.org/get/}}.  However, for this group assignment, you might like to use an on-line collaborative environment such as \emph{Overleaf}\footnote{\url{https://www.overleaf.com}}.
-
-You have been provided with a \texttt{.zip} file containing the \LaTeX\ source material for this document (on MOLE).  The main file is \texttt{COM2009-3009\_Assignment-1\_Robot-XY.tex}, which is a plain-text file containing the source text with html-style markup.  This \texttt{.tex} file should be edited in order to become your group's assignment report.  Instructions on how to do this are contained in the file itself as comments (lines preceded by a \% symbol).  
-
-{\bfseries Note:}  \emph{Before you start working with \emph{\LaTeX}, edit the filename of the provided \texttt{.tex} file by replacing `X' and `Y' with your robot's id (e.g. `D4').}
-
- 
-If modified correctly, your edited \texttt{.tex} file should produce a \texttt{.pdf} report with the names of your team members and the id of your robot on the front cover, followed by Parts I and II (where you will be providing answers to a number of questions).  The `Overview' section (i.e.\ the section you are reading now) and the `Getting Started with the EV3 Robot' section should NOT appear in your report.  
-
-{\bfseries Note:}  \emph{The \texttt{.zip} file also contains various image files.  One of these is a placeholder for a photo of your robot.}
-
-Finally, here's an example of how you modify your \texttt{.tex} file to indicate that a task has been completed (you need to look inside the raw \texttt{.tex} file to see how it's done) \ldots
-\begin{todolist}
-	\item[\done] task completed
- \end{todolist}
-
-
-\newpage
-
-
-\section{Getting Started with the EV3 Robot}
-
-You may have already used the Lego Mindstorms EV3 robots in your first-year \texttt{Java} programming course (COM1003).  However, the EV3s were controlled by sending commands over a wireless connection from a \texttt{Java} program running on a desktop computer.  As you may have discovered, this is a sub-optimal configuration for real-time control.  Hence in COM2009-3009 you will be programming in \texttt{Python} and using \texttt{Visual Studio Code} to upload your software to run directly on the EV3 processor.  This will facilitate fast response times independent of the wireless network.
-
-The programming environment is \texttt{EV3DEV}\footnote{\url{https://www.ev3dev.org}} - a Debian Linux-based operating system which runs from a microSD card that has been inserted into the COM2009-3009 robots.  It is thus very important that you do NOT remove this SD card from your robot.
-
-Your first practical task is to collect your robot, set up communications between your robot and your computer, and upload a test program to the robot.  In order to do this, please \textbf{follow the instructions below carefully}, paying particular attention to those which say ``{\color {red} DO NOT}'' perform some action.
-
-
-\subsection{Setting Up your EV3 Robot}
-
-\begin{todolist}
-	\item Collect your robot.
- \end{todolist}
- 
-You should start with the EV3 robot in its basic `Driving Base' configuration (two driving wheels at one end and a steel ball bearing at the other).  For the purposes of this assignment, the driving wheels will be referred to as being ``at the back of the robot'' and the steel ball bearing will be regarded as the ``front of the robot''.  So, looking from the back of the robot \ldots
-
-\begin{todolist}
-	\item Check that the left-hand motor is connected to \texttt{Output C}.
-	\item Check that the right-hand motor is connected to \texttt{Output B}.
-	\item Attach an ultrasonic sensor near to the front of the robot facing forwards.
-	\item Connect the ultrasonic sensor to \texttt{Input 3}.
-\end{todolist}
-
-{\bfseries Note:}  \emph{This is the basic test setup.  Once you are up-and-running, you are free to reconfigure your robot as you wish.}
-
-\begin{todolist}
-	\item Boot up your EV3 by pressing the dark-grey centre button.
- \end{todolist}
- 
-The lights will flash orange, `\texttt{EV3DEV}' will be displayed at the top of the screen, and tiny text will scroll past as \texttt{Linux} starts up.  After a while the screen will briefly display `\texttt{Brickman Loading}' followed by a menu headed `\texttt{File Browser}'.  However, {\color {red} DO NOT} touch anything until the EV3 has fully booted up at which point the lights turn a steady green.  Be patient; this whole process takes more than three minutes!  Indeed, move on to the next section while the robot boots up.
-
-{\bfseries Note:}  \emph{If when your robot boots up the lights go red and the display shows `\texttt{MINDSTORMS starting}', then there is something wrong with your microSD card (or it is missing).  Contact one of the demonstrators for help.}
-
-{\bfseries Note:}  \emph{If nothing happens when you attempt to boot up, then the battery may be discharged.  In this case you need to return it to its cupboard and place it on charge.}
-
-
-\subsection{Configuring Visual Studio Code (VSCode)}
-
-Login to Windows and follow the instructions below very carefully.
-
-{\bfseries Note:}  \emph{You should only need to perform this setup once (for each user).}
-
-\begin{todolist}
-	\item Download `\texttt{com2009-3009\_ev3dev\_test.zip}' from MOLE, and unzip it into your preferred local workspace.
-	\item Start \texttt{VSCode} on the PC.  This should bring up a `\texttt{Welcome}' screen.
-	\item If a `\texttt{Getting Started}' website opens, you can \texttt{close} or \texttt{minimize} it.
-	\item Ignore any immediate messages in \texttt{VSCode}.
-	\item In \texttt{VSCode}, click on the `\texttt{Explorer}' icon (top left).
-	\item Click on `\texttt{Open Folder}'.
-	\item Navigate to the \underline{folder} (NOT the file) `\texttt{com2009-3009\_ev3dev\_test}'.
-	\item Click `\texttt{Select Folder}'.
-	\item A workspace will open on the left-hand side, and a pane on the bottom-right will appear labelled `\texttt{This workspace has extension recommendations}'.
-	\item {\color {red} DO NOT} click on `\texttt{Install All}'.
-	\item Click on `\texttt{Show Recommendations}'.
-	\item Two recommendations will appear on the left.
-	\item {\color {red} DO NOT} click on the green `\texttt{Install}' button for `\texttt{Python}'.
-	\item Click on the green `\texttt{Install}' button for the `\texttt{ev3dev-Browser}'.
-	\item The right-hand pane in \texttt{VSCode} should now show an information page headed with the \texttt{EV3DEV.ORG} logo, and the green `\texttt{Install}' button will change to blue `\texttt{Installing}'.
-	\item Wait for the `\texttt{ev3dev-Browser}' install button to change to blue `\texttt{Reload}', then click on it.
-	\item Now click on the `\texttt{Explorer}' icon (top left) and select `\texttt{com2009-3009\_ev3dev\_test.py}.
-\end{todolist}
-
-You should now see \texttt{Python} code displayed in the right-hand pane of \texttt{VSCode}.  You may close any small windows labelled `\texttt{This workspace has extension recommendations}'.
-
-You are now ready to get \texttt{VSCode} to talk to your robot.
-
-
-\subsection{Connecting VSCode to the EV3}
-
-{\bfseries Note:}  \emph{The EV3s are already connected to the Diamond WiFi network, please {\color {red} DO NOT} attempt to change any of the wireless settings.}
-
-\begin{todolist}
-	\item In the bottom-left-hand corner of \texttt{VSCode}, click on `\texttt{EV3 DEVICE BROWSER}'.
-	\item Now click on `\texttt{Click here to connect to device}'.
-	\item Click on `\texttt{I don't see my device\ldots}'.
-	\item Click on `\texttt{Enter a name for device}', type the brick id (e.g.\ B5), and press `Enter'.
-	\item Enter the IP address of your robot (located at the top of the display on the EV3 brick).  {\color {red} DO NOT} enter quotation marks.  Press `Enter'.
-	\item A yellow dot will appear under `\texttt{EV3 DEVICE BROWSER}.  After a few seconds this should turn green indicating that \texttt{VSCode} and the EV3 are connected.
-\end{todolist}
-
-You are now ready to upload the test code onto the robot.
-
-
-\subsection{Running the Test Code on the EV3}
-
-\begin{todolist}
-	\item Place the robot such that it is facing a flat vertical surface (such as a wall) at a distance of around 25 cm.
-	\item Click again on the \texttt{Explorer} icon.
-	\item Click on \texttt{com2009-3009\_ev3dev\_test.py}
-	\item Python code should now be displayed in the right-hand pane.
-	\item In the menu, click on `\texttt{Debug}' then `\texttt{Start Debugging}' (or press F5) to send the code to the robot and start it running
-\end{todolist}
-
-If everything has been setup correctly, then the robot should perform the following actions in sequence:
-\begin{itemize}
-	\item The green lights on the robot will start to flash.
-	\item A synthetic voice will say ``\emph{Test program starting}''.
-	\item ``\texttt{Hello World!} will be displayed on the robot's screen, and ``\texttt{Hello VS Code!}'' will appear in \texttt{VSCode}'s debug window.
-	\item The distance to the nearest surface will be displayed on the robot's screen, sent to \texttt{VSCode}'s debug window and spoken by the synthetic voice.
-	\item The robot will move forwards and backwards a few times, and the relevant distances will be displayed and spoken. 
-	\item The voice will say ``\emph{Test program ending}''.
-	\item The program will terminate and the lights will go green.
-\end{itemize}
-
-If you have any difficulties, contact one of the demonstrators.  
-
-{\bfseries Note:}  \emph{Once a program is uploaded to the EV3, it can be executed using the controls on the brick itself.  Simply use the \texttt{File Browser} to locate the relevant \texttt{.py} file, and press the dark-grey centre button to run the code.}
-
-{\bfseries Note:}  \emph{As well as the main arena, we have arranged for some `mini'-arenas to be available for you to use if you wish.}
-
-
-\subsection{Writing Your Own Code}
-
-In order to write your own program, you also need to provide the required ancillary files used by \texttt{VSCode}.  The easiest way to do this is to copy an existing folder.
-
-\begin{todolist}
-	\item Make a copy of the `\texttt{com2009-3009\_ev3dev\_test}' folder.
-	\item Edit the folder name to `\texttt{your-program-name-XX}', where ``your-program-name'' is anything you like, and ``XX'' is the id of your robot.
-	\item Inside the folder, edit the filename `\texttt{com2009-3009\_ev3dev\_test.py}' to\\ `\texttt{your-program-name-XX.py}'.
-	\item Start \texttt{VSCode}.
-	\item Navigate to your folder.
-	\item Click on `\texttt{.vscode}'.
-	\item Click on `\texttt{\{\} launch.json}'
-	\item Edit \\ \texttt{"program":\ "/home/robot/\$\{workspaceRootFolderName\}/com2009-3009\_ev3dev\_test.py"} to \\ \texttt{"program":\ "/home/robot/\$\{workspaceRootFolderName\}/your-program-name-XX.py"}. \\ (This step is VERY important, as it tells \texttt{VSCode} which program to download and run.)
-	\item Click on `\texttt{File}', `\texttt{Save All}'.
-	\item Click on the \texttt{Explorer} icon.
-	\item Click on \texttt{your-program-name-XX.py}
-	\item Edit the code as you wish (and remember to save at regular intervals).
-\end{todolist}
-
-The provided test file (\texttt{com2009-3009\_ev3dev\_test.py}) contains much of what you need for this assignment.  However, full information on the \texttt{Python} bindings for \texttt{ev3dev} is available here: \url{https://python-ev3dev.readthedocs.io/en/stable/spec.html}.
-
-{\bfseries Note:}  \emph{Please be sure that your code is shared with each member of your group, e.g.\ by using a private \texttt{Git} repository.}
-
-{\bfseries Note:}  \emph{Be aware that each robot is shared between the Group A and Group B lab sessions.  So, take care NOT to plagiarise another team's code, e.g.\ by deleting your code from the robot after each lab session.}
-
-
-\subsection{Shutting Down the EV3}
-
-To shut down your robot, press the light-grey button just under the left-hand side of the screen.  The option to \texttt{Power Off} will be highlighted.  If you change your mind, press the light-grey button again and you will return to the normal screen.  If you wish to go ahead, press the dark-grey centre button.  The lights will turn red, and the robot will shut down.
+%\section{Overview (please read carefully)}
+
+%The lab classes for COM2009-3009 take place in Computer Room 3 in the Diamond (DIA-CR3) from 13:00 to 14:50 on Mondays (for Group A) and 09:00 to 10:50 on Wednesdays (for Group B).  The aim of the first assignment (weeks 1 to 6) is for you to gain practical hands-on experience in designing, implementing and evaluating a robot's behaviour.  In particular, you will be working with a Lego Mindstorms EV3 robot (i) to investigate various control strategies (especially `closed-loop control'), and (ii) to use the knowledge gained to implement a robot capable of competing in a maze-running task.  You will be assessed on a group report that is to be handed-in before {\color {red} \textbf{midnight Friday 15th March 2019}}.
+
+
+%\subsection{Logistics}
+
+%You will work in teams of three (assigned randomly, as per University policy), and each team has been allocated a particular robot.  See the list on MOLE to find your partners and robot.
+
+%Four PhD student demonstrators will be in attendance to provide help and advice: Ben Hawker, Zeke Hobbs, Blayze Millward and Aryan Mohammadi Pasikhani.
+
+%{\bfseries Note:}  \emph{The demonstrators' role is to help with your learning, NOT to debug your programs.}
+
+%The Lego EV3 robots are located in charging cabinets in DIA-CR3.  There are 80 robots available and they are each identified with a letter and a digit.  COM2009-3009 will be using robots A to E, as robots F to J are being used by COM1003.  The letter identifies the cabinet that contains the robot.  The robot kit consists of a microcomputer - known as the ``brick'' - and a box of components that contains a chassis configured as a three-wheeled `Driving Base'.  You simply slot the brick on top of the chassis and connect the required motors and sensors using the black cables.
+
+%The cabinets will be opened by the Diamond staff (who wear purple shirts) at the beginning of each lab session.  The cabinets are located alphabetically in an anticlockwise arrangement around DIA-CR3.
+
+%{\bfseries Note:}  \emph{You may \underline{not} take a robot out of DIA-CR3 under any circumstances!}
+
+%{\bfseries Note:}  \emph{Please be careful in and around the robot arena; the robots can move unexpectedly and the arena itself is high enough to be a trip hazard.  There is a risk assessment for this in the folder on the teaching podium.}
+
+%At the end of each lab session, turn off your robot and return it to the correct charging cabinet, with the microcomputer (brick) being placed on charge by plugging in the power adapter in the centre section of the cabinet.
+
+%{\bfseries Note:}  \emph{If you have customised your robot, take a photo (as a memory aid) and return it to its original `Driving Base' configuration and place all the Lego back in its box.  This is necessary because the robots are shared between Group A and Group B.}
+
+
+%\subsection{The Assignment}
+%
+%As mentioned above, this assignment consists of two parts: Part I - an investigation of the properties and behaviour of open-loop \emph{vs.} closed-loop control strategies, and Part II - the design and implementation of a robot which you will enter into a maze-running competition.  See the following sections for details.
+%
+%\textbf{It is important that you complete Part I of the assignment well before the end of the third lab session.}  This will give you plenty of time to optimise your entry for the maze-running competition in Part II.  The competition itself will take place in week 6 (11th March for Group A and 13th March for Group B).
+%
+%{\bfseries Note:}  \emph{Despite our best efforts, so far it has NOT been possible to arrange access to the robots outside the timetabled lab sessions.  So it is VERY important that you make full use of the scheduled lab sessions.}
+%
+%
+%\subsection{Assessment}
+%
+%This lab assignment is worth 25\% of the overall mark for COM2009-3009.  Each group should submit a report using these instructions as a guide.  There are 17 questions to be answered in the report, with different marks assigned to each question.  The total adds up to 100 marks.
+%
+%
+%\subsection{Report Submission}
+%
+%Your report should be submitted as a single \texttt{.pdf} file to MOLE.  You do NOT need to submit a paper copy.   Please make sure that your names and the id of your robot are shown correctly on the front page of your report.  The next section explains how to do this.
+%
+%The deadline is {\color{red}{\bfseries midnight Friday 15th March 2019}}.
+%
+%{\bfseries Note:}  \emph{Each team should submit \underline{one} report, so you'll need to select one member of your team to submit it to MOLE.}
+%
+%
+%\subsection{About this Document}
+%
+%This document not only provides the instructions for your first COM2009-3009 lab assignment, but it is also the \emph{template} for your report.  The \texttt{.pdf} was produced using \LaTeX\ (pronounced ``\emph{lah-tech}'' or ``\emph{lay-tech}''), which is a \emph{free} document preparation system for high-quality typesetting\footnote{You can find out more about \LaTeX\ here: \url{https://www.latex-project.org}.} .  \LaTeX\ includes features designed for the production of technical and scientific documentation, so it is the de-facto standard for the publication of scientific/technical papers and reports.  Unlike WYSIWYG (``\emph{What You See Is What You Get}'') word processors (such as \emph{Microsoft Word} or \emph{OpenOffice}), \LaTeX\ is based on plain-text source files containing html-style markup which are compiled into a typeset document.  This separation of `content' from `style' facilitates the production of very professional scientific documents in terms of their consistency, readability and design.
+%
+%Having a working knowledge of \LaTeX\ is a key skill for any computer scientist, and the Department strongly recommends that you consider using it for your 3rd-year Dissertation\footnote{Prof.\ Moore can supply a template on request.}.  \LaTeX\ is very easy to learn\footnote{A particularly good introduction can be found at \url{https://www.sharelatex.com/learn/Learn_LaTeX_in_30_minutes}.}, and there are many resources available on the web.
+%
+%\LaTeX\ distributions are available for Linux, Mac OSX and Windows\footnote{\url{https://www.latex-project.org/get/}}.  However, for this group assignment, you might like to use an on-line collaborative environment such as \emph{Overleaf}\footnote{\url{https://www.overleaf.com}}.
+%
+%You have been provided with a \texttt{.zip} file containing the \LaTeX\ source material for this document (on MOLE).  The main file is \texttt{COM2009-3009\_Assignment-1\_Robot-XY.tex}, which is a plain-text file containing the source text with html-style markup.  This \texttt{.tex} file should be edited in order to become your group's assignment report.  Instructions on how to do this are contained in the file itself as comments (lines preceded by a \% symbol).  
+%
+%{\bfseries Note:}  \emph{Before you start working with \emph{\LaTeX}, edit the filename of the provided \texttt{.tex} file by replacing `X' and `Y' with your robot's id (e.g. `D4').}
+%
+% 
+%If modified correctly, your edited \texttt{.tex} file should produce a \texttt{.pdf} report with the names of your team members and the id of your robot on the front cover, followed by Parts I and II (where you will be providing answers to a number of questions).  The `Overview' section (i.e.\ the section you are reading now) and the `Getting Started with the EV3 Robot' section should NOT appear in your report.  
+%
+%{\bfseries Note:}  \emph{The \texttt{.zip} file also contains various image files.  One of these is a placeholder for a photo of your robot.}
+%
+%Finally, here's an example of how you modify your \texttt{.tex} file to indicate that a task has been completed (you need to look inside the raw \texttt{.tex} file to see how it's done) \ldots
+%\begin{todolist}
+%	\item[\done] task completed
+% \end{todolist}
+%
+%
+%\newpage
+%
+%
+%\section{Getting Started with the EV3 Robot}
+%
+%You may have already used the Lego Mindstorms EV3 robots in your first-year \texttt{Java} programming course (COM1003).  However, the EV3s were controlled by sending commands over a wireless connection from a \texttt{Java} program running on a desktop computer.  As you may have discovered, this is a sub-optimal configuration for real-time control.  Hence in COM2009-3009 you will be programming in \texttt{Python} and using \texttt{Visual Studio Code} to upload your software to run directly on the EV3 processor.  This will facilitate fast response times independent of the wireless network.
+%
+%The programming environment is \texttt{EV3DEV}\footnote{\url{https://www.ev3dev.org}} - a Debian Linux-based operating system which runs from a microSD card that has been inserted into the COM2009-3009 robots.  It is thus very important that you do NOT remove this SD card from your robot.
+%
+%Your first practical task is to collect your robot, set up communications between your robot and your computer, and upload a test program to the robot.  In order to do this, please \textbf{follow the instructions below carefully}, paying particular attention to those which say ``{\color {red} DO NOT}'' perform some action.
+%
+%
+%\subsection{Setting Up your EV3 Robot}
+%
+%\begin{todolist}
+%	\item Collect your robot.
+% \end{todolist}
+% 
+%You should start with the EV3 robot in its basic `Driving Base' configuration (two driving wheels at one end and a steel ball bearing at the other).  For the purposes of this assignment, the driving wheels will be referred to as being ``at the back of the robot'' and the steel ball bearing will be regarded as the ``front of the robot''.  So, looking from the back of the robot \ldots
+%
+%\begin{todolist}
+%	\item Check that the left-hand motor is connected to \texttt{Output C}.
+%	\item Check that the right-hand motor is connected to \texttt{Output B}.
+%	\item Attach an ultrasonic sensor near to the front of the robot facing forwards.
+%	\item Connect the ultrasonic sensor to \texttt{Input 3}.
+%\end{todolist}
+%
+%{\bfseries Note:}  \emph{This is the basic test setup.  Once you are up-and-running, you are free to reconfigure your robot as you wish.}
+%
+%\begin{todolist}
+%	\item Boot up your EV3 by pressing the dark-grey centre button.
+% \end{todolist}
+% 
+%The lights will flash orange, `\texttt{EV3DEV}' will be displayed at the top of the screen, and tiny text will scroll past as \texttt{Linux} starts up.  After a while the screen will briefly display `\texttt{Brickman Loading}' followed by a menu headed `\texttt{File Browser}'.  However, {\color {red} DO NOT} touch anything until the EV3 has fully booted up at which point the lights turn a steady green.  Be patient; this whole process takes more than three minutes!  Indeed, move on to the next section while the robot boots up.
+%
+%{\bfseries Note:}  \emph{If when your robot boots up the lights go red and the display shows `\texttt{MINDSTORMS starting}', then there is something wrong with your microSD card (or it is missing).  Contact one of the demonstrators for help.}
+%
+%{\bfseries Note:}  \emph{If nothing happens when you attempt to boot up, then the battery may be discharged.  In this case you need to return it to its cupboard and place it on charge.}
+%
+%
+%\subsection{Configuring Visual Studio Code (VSCode)}
+%
+%Login to Windows and follow the instructions below very carefully.
+%
+%{\bfseries Note:}  \emph{You should only need to perform this setup once (for each user).}
+%
+%\begin{todolist}
+%	\item Download `\texttt{com2009-3009\_ev3dev\_test.zip}' from MOLE, and unzip it into your preferred local workspace.
+%	\item Start \texttt{VSCode} on the PC.  This should bring up a `\texttt{Welcome}' screen.
+%	\item If a `\texttt{Getting Started}' website opens, you can \texttt{close} or \texttt{minimize} it.
+%	\item Ignore any immediate messages in \texttt{VSCode}.
+%	\item In \texttt{VSCode}, click on the `\texttt{Explorer}' icon (top left).
+%	\item Click on `\texttt{Open Folder}'.
+%	\item Navigate to the \underline{folder} (NOT the file) `\texttt{com2009-3009\_ev3dev\_test}'.
+%	\item Click `\texttt{Select Folder}'.
+%	\item A workspace will open on the left-hand side, and a pane on the bottom-right will appear labelled `\texttt{This workspace has extension recommendations}'.
+%	\item {\color {red} DO NOT} click on `\texttt{Install All}'.
+%	\item Click on `\texttt{Show Recommendations}'.
+%	\item Two recommendations will appear on the left.
+%	\item {\color {red} DO NOT} click on the green `\texttt{Install}' button for `\texttt{Python}'.
+%	\item Click on the green `\texttt{Install}' button for the `\texttt{ev3dev-Browser}'.
+%	\item The right-hand pane in \texttt{VSCode} should now show an information page headed with the \texttt{EV3DEV.ORG} logo, and the green `\texttt{Install}' button will change to blue `\texttt{Installing}'.
+%	\item Wait for the `\texttt{ev3dev-Browser}' install button to change to blue `\texttt{Reload}', then click on it.
+%	\item Now click on the `\texttt{Explorer}' icon (top left) and select `\texttt{com2009-3009\_ev3dev\_test.py}.
+%\end{todolist}
+%
+%You should now see \texttt{Python} code displayed in the right-hand pane of \texttt{VSCode}.  You may close any small windows labelled `\texttt{This workspace has extension recommendations}'.
+%
+%You are now ready to get \texttt{VSCode} to talk to your robot.
+%
+%
+%\subsection{Connecting VSCode to the EV3}
+%
+%{\bfseries Note:}  \emph{The EV3s are already connected to the Diamond WiFi network, please {\color {red} DO NOT} attempt to change any of the wireless settings.}
+%
+%\begin{todolist}
+%	\item In the bottom-left-hand corner of \texttt{VSCode}, click on `\texttt{EV3 DEVICE BROWSER}'.
+%	\item Now click on `\texttt{Click here to connect to device}'.
+%	\item Click on `\texttt{I don't see my device\ldots}'.
+%	\item Click on `\texttt{Enter a name for device}', type the brick id (e.g.\ B5), and press `Enter'.
+%	\item Enter the IP address of your robot (located at the top of the display on the EV3 brick).  {\color {red} DO NOT} enter quotation marks.  Press `Enter'.
+%	\item A yellow dot will appear under `\texttt{EV3 DEVICE BROWSER}.  After a few seconds this should turn green indicating that \texttt{VSCode} and the EV3 are connected.
+%\end{todolist}
+%
+%You are now ready to upload the test code onto the robot.
+%
+%
+%\subsection{Running the Test Code on the EV3}
+%
+%\begin{todolist}
+%	\item Place the robot such that it is facing a flat vertical surface (such as a wall) at a distance of around 25 cm.
+%	\item Click again on the \texttt{Explorer} icon.
+%	\item Click on \texttt{com2009-3009\_ev3dev\_test.py}
+%	\item Python code should now be displayed in the right-hand pane.
+%	\item In the menu, click on `\texttt{Debug}' then `\texttt{Start Debugging}' (or press F5) to send the code to the robot and start it running
+%\end{todolist}
+%
+%If everything has been setup correctly, then the robot should perform the following actions in sequence:
+%\begin{itemize}
+%	\item The green lights on the robot will start to flash.
+%	\item A synthetic voice will say ``\emph{Test program starting}''.
+%	\item ``\texttt{Hello World!} will be displayed on the robot's screen, and ``\texttt{Hello VS Code!}'' will appear in \texttt{VSCode}'s debug window.
+%	\item The distance to the nearest surface will be displayed on the robot's screen, sent to \texttt{VSCode}'s debug window and spoken by the synthetic voice.
+%	\item The robot will move forwards and backwards a few times, and the relevant distances will be displayed and spoken. 
+%	\item The voice will say ``\emph{Test program ending}''.
+%	\item The program will terminate and the lights will go green.
+%\end{itemize}
+%
+%If you have any difficulties, contact one of the demonstrators.  
+%
+%{\bfseries Note:}  \emph{Once a program is uploaded to the EV3, it can be executed using the controls on the brick itself.  Simply use the \texttt{File Browser} to locate the relevant \texttt{.py} file, and press the dark-grey centre button to run the code.}
+%
+%{\bfseries Note:}  \emph{As well as the main arena, we have arranged for some `mini'-arenas to be available for you to use if you wish.}
+%
+%
+%\subsection{Writing Your Own Code}
+%
+%In order to write your own program, you also need to provide the required ancillary files used by \texttt{VSCode}.  The easiest way to do this is to copy an existing folder.
+%
+%\begin{todolist}
+%	\item Make a copy of the `\texttt{com2009-3009\_ev3dev\_test}' folder.
+%	\item Edit the folder name to `\texttt{your-program-name-XX}', where ``your-program-name'' is anything you like, and ``XX'' is the id of your robot.
+%	\item Inside the folder, edit the filename `\texttt{com2009-3009\_ev3dev\_test.py}' to\\ `\texttt{your-program-name-XX.py}'.
+%	\item Start \texttt{VSCode}.
+%	\item Navigate to your folder.
+%	\item Click on `\texttt{.vscode}'.
+%	\item Click on `\texttt{\{\} launch.json}'
+%	\item Edit \\ \texttt{"program":\ "/home/robot/\$\{workspaceRootFolderName\}/com2009-3009\_ev3dev\_test.py"} to \\ \texttt{"program":\ "/home/robot/\$\{workspaceRootFolderName\}/your-program-name-XX.py"}. \\ (This step is VERY important, as it tells \texttt{VSCode} which program to download and run.)
+%	\item Click on `\texttt{File}', `\texttt{Save All}'.
+%	\item Click on the \texttt{Explorer} icon.
+%	\item Click on \texttt{your-program-name-XX.py}
+%	\item Edit the code as you wish (and remember to save at regular intervals).
+%\end{todolist}
+%
+%The provided test file (\texttt{com2009-3009\_ev3dev\_test.py}) contains much of what you need for this assignment.  However, full information on the \texttt{Python} bindings for \texttt{ev3dev} is available here: \url{https://python-ev3dev.readthedocs.io/en/stable/spec.html}.
+%
+%{\bfseries Note:}  \emph{Please be sure that your code is shared with each member of your group, e.g.\ by using a private \texttt{Git} repository.}
+%
+%{\bfseries Note:}  \emph{Be aware that each robot is shared between the Group A and Group B lab sessions.  So, take care NOT to plagiarise another team's code, e.g.\ by deleting your code from the robot after each lab session.}
+%
+%
+%\subsection{Shutting Down the EV3}
+%
+%To shut down your robot, press the light-grey button just under the left-hand side of the screen.  The option to \texttt{Power Off} will be highlighted.  If you change your mind, press the light-grey button again and you will return to the normal screen.  If you wish to go ahead, press the dark-grey centre button.  The lights will turn red, and the robot will shut down.
 
 
 %^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -311,7 +311,7 @@ Let $v$ be the base speed of the wheels and $\delta_{v}$ the speed differential 
 
 {\bfseries Question \myq:}  \emph{What happens when $v=\pm\delta_{v}$?} (Worth up to 2 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+When v and  \pm\delta_{v} have the same value and sign, the right motor speed becomes 0. If they are both positive the robot rotates anticlockwise and if they are both negative the robot rotates clockwise. If the values are the same but the signs are opposite, the speed of the left motor if set to 0. If \pm\delta_{v} is positive and v is negative then the robot will rotate clockwise, and if \pm\delta_{v}  is negative and v is positive, it will rotate anticlockwise.
 \end{mdframed}
 \vspace*{\baselineskip}
 
