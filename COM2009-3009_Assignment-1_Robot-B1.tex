@@ -328,13 +328,53 @@ The example program - \texttt{com2009-3009\_ev3dev\_test.py} - shows how to read
 
 {\bfseries Question \myq:}  \emph{How do the mean, standard deviation, minimum and maximum values from the ultrasonic sensor vary as a function of the \underline{actual} distance to a surface?} (Worth up to 4 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
-\end{mdframed}
+As the the number of samples increase the standard deviation starts decreasing towards zero. The final standard deviation value after a thousand samples is 0.00504 mm. However, the mean starts increasing towards a more consistent value, if analysed the real value which is 15 cm to the final mean after a thousand samples which is 14.8 cm it will all differ by 1.2 cm which for the experiment and type of application that the robot will be used for, is plausible. The minimum mean value differ by 9 to the real value and the maximum will differ by 1.
+  \end{mdframed}
 \vspace*{\baselineskip}
 
 {\bfseries Question \myq:}  \emph{How do the mean, standard deviation, minimum and maximum values from the ultrasonic sensor vary as a function of surface angle?} (Worth up to 4 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+From the first experiment it was changed the surface angle from a 90 degree angle to a 120 degree angle. 
+
+Mean 678.1422805247216
+Variance 0.008257383485349414
+Standar Deviation 0.09087014628220542
+Distance 681
+Mean 678.1451612903217
+Variance 0.008232419959057914
+Standar Deviation 0.09073268407281862
+Distance 681
+Mean 678.1480362537756
+Variance 0.008207556956976624
+Standar Deviation 0.09059556808683648
+Distance 681
+Mean 678.1509054325946
+Variance 0.008182793973620437
+Standar Deviation 0.09045879710465111
+Distance 681
+Mean 678.1537688442202
+Variance 0.008158130506551509
+Standar Deviation 0.09032236991217352
+Distance 681
+Mean 678.1566265060231
+Variance 0.008133566056357273
+Standar Deviation 0.09018628530079989
+Distance 685
+Mean 678.1634904714133
+Variance 0.046972678814508485
+Standar Deviation 0.2167318131112931
+Distance 676
+Mean 678.1613226452896
+Variance 0.004690071162220496
+Standar Deviation 0.06848409422793365
+Distance 681
+Mean 678.1641641641631
+Variance 0.008066155279425181
+Standar Deviation 0.08981177695283164
+----------
+
+Maximum distance 681
+Minimum distance 676
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -375,19 +415,19 @@ $$u(t) = K_P e(t) + K_I \int e(t)dt + K_D \frac{de}{dt}(t) ,$$
 
 {\bfseries Question \myq:}  \emph{In a negative-feedback control system, what is the significance of $e=0$?} (Worth up to 2 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+When e = 0, the difference between the reference input and the feedback signal is 0, and so there is no error. This means the sensed value and the actual value that is expected are the same.
 \end{mdframed}
 \vspace*{\baselineskip}
 
 {\bfseries Question \myq:}  \emph{Give an example of a real-world negative-feedback control system and describe its operation.} (Worth up to 8 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
 \end{mdframed}
 \vspace*{\baselineskip}
 
 {\bfseries Question \myq:}  \emph{Assuming that $K_I=0$ and $K_D=0$, what would happen to your example system if (i) $K_P=0$ or (ii) $K_P<0$?} (Worth up to 4 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+(i) If $K_P=0$ then the entire function for the control signal evaluates to 0.
+(ii) If $K_P<0$ then the entire function for the control signal will evaluate to a negative value.
 \end{mdframed}
 \vspace*{\baselineskip}
 
