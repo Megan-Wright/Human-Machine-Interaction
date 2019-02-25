@@ -14,13 +14,15 @@ import math
 # state constants
 ON = True
 OFF = False
-m_n=0
-m_oldM=0 
-m_newM=0 
-m_oldS=0
-m_newS=0
+m_n = 0
+m_oldM = 0
+m_newM = 0
+m_oldS = 0
+m_newS = 0
 
 # Calculation for standard deviation, variance and mean
+
+
 def push(value):
     global m_n
     global m_oldM
@@ -30,14 +32,13 @@ def push(value):
 
     m_n = m_n + 1
 
-    if(m_n==1):
-        m_oldM = m_newM 
+    if(m_n == 1):
+        m_oldM = m_newM
         m_newM = value
-        m_oldS= 0.0
+        m_oldS = 0.0
     else:
         m_newM = m_oldM + (value-m_oldM)/m_n
         m_newS = m_oldS + (value-m_oldM)*(value-m_newM)
-
         # Set up for next iteraction
         m_oldM = m_newM
         m_old = m_newS
@@ -45,17 +46,21 @@ def push(value):
 
 def mean():
     global m_n
-    if (m_n>0):
+    if (m_n > 0):
         return m_newM
     else:
         return 0.0
+
+
 def variance():
     global m_newS
     global m_n
-    if (m_n>1):
+    if (m_n > 1):
         return m_newS/(m_n-1)
-    else: 
+    else:
         return 0.00
+
+
 def standard_deviation():
     return math.sqrt(variance())
 
@@ -116,8 +121,7 @@ def main():
 
     # # program loop
     # for x in range (1, 5):
-    
-        
+
     # display the distance on the screen of the device
     # print('Distance =',ds)
 
@@ -131,46 +135,37 @@ def main():
     # mb.run_direct(duty_cycle_sp=sp)
     # mc.run_direct(duty_cycle_sp=sp)
     # time.sleep(0.)
-    for x in range(1,1000):
+    for x in range(1, 1000):
         time.sleep(0.01)
         ds = us3.value()
         # debug_print('Distance =',ds)
         push(ds)
         mean_current = mean()
         variance_current = variance()
-        stdev = standard_deviation() 
-        debug_print("Distance",ds)
-        debug_print ("Mean",mean_current)
-        debug_print ("Variance",variance_current)
-        debug_print("Standar Deviation",stdev)
-
-        
-    
-
-
+        stdev = standard_deviation()
+        debug_print("Distance", ds)
+        debug_print("Mean", mean_current)
+        debug_print("Variance", variance_current)
+        debug_print("Standar Deviation", stdev)
 
     #     # stop
     #     mb.run_direct(duty_cycle_sp=0)
     #     mc.run_direct(duty_cycle_sp=0)
-        
+
     #     # reverse direction
     #     sp = -sp
-    
+
     # # announce program end
     # ev3.Sound.speak('Test program ending').wait()
     # push(17.0)
     # push(18.0)
     # push(5.0)
-
-    
-
     # mean_current = mean()
     # variance_current = variance()
-    # stdev = standard_deviation() 
+    # stdev = standard_deviation()
     # debug_print (mean_current)
     # debug_print (variance_current)
     # debug_print(stdev)
     # debug_print(m_n)
-
 if __name__ == '__main__':
     main()
