@@ -389,8 +389,11 @@ When e = 0, the difference between the reference input and the feedback signal i
 
 {\bfseries Question \myq:}  \emph{Assuming that $K_I=0$ and $K_D=0$, what would happen to your example system if (i) $K_P=0$ or (ii) $K_P<0$?} (Worth up to 4 marks)\\
 \begin{mdframed}
-(i) If $K_P=0$ then the entire function for the control signal evaluates to 0.
-(ii) If $K_P<0$ then the entire function for the control signal will evaluate to a negative value.
+If $K_I=0$ and $K_D=0$ then the given formula will be the same as $u(t) = K_P e(t) $ it means that the control variable u(t) will depend on K_P and error value e(t).
+
+i) K_P is proportional tuning, so it involves correcting a target proportional to the difference. If the difference of the target and sensed values is 0, then it wouldn’t perform tuning.
+
+ii) It will make the u(t) value negative. A PID controller uses a negative feedback system. If the u(t) is negative, then it will make the system unstable. (This could lead to increasing oscillations and possible destruction of the mechanism.)
 \end{mdframed}
 \vspace*{\baselineskip}
 
