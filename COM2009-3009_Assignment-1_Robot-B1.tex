@@ -354,7 +354,12 @@ Mean: 6.78 cm, 14.8 cm (second)
 
 {\bfseries Question \myq:}  \emph{In the above implementation, (i) how did you determine the control parameters for ensuring that the robot travelled the target distance and rotated the appropriate amount, (ii) how sensitive was it to the selected parameters, and (iii) how reliable was the best solution?} (Worth up to 4 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+i) We tried a method in the ev3dev documentation called run_timed, which can rotate the wheel by calculating time and speed, however it didn't work in the way we needed for this question.
+ So we implemented based on running the robot with motor speed and time.sleep. As we couldn't calculate the exact distance due to the delay in reaching the target speed we set, we tried multiple values to get 0.5m and 180 degrees. 
+After a few times of experiments we could get speed=60, time=2.5 for moving 0.5 m and speed 10 and 2 seconds for rotating 180 degrees.
+
+ii) Not very sensitive in the sense that a slight change in value doesn't make a noticeable difference. However, a drastic change in values would completely change the way the robot moves. 
+iii) Not very reliable, we can't find the exact metric of speed thus can't get an approximate calculation before we actually run the code, and so most of our testing was down to trial and error.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -385,7 +390,7 @@ When e = 0, the difference between the reference input and the feedback signal i
 {\bfseries Question \myq:}  \emph{Give an example of a real-world negative-feedback control system and describe its operation.} (Worth up to 8 marks)\\
 \begin{mdframed}
 \includegraphics[scale=0.5]{53184576_2330450700571615_6653254334093983744_n.jpg} 
-The heater we use indoor uses negative feedback system. The heater heats up the room and uses the thermostat (sensor) to check the current temperature, and if the room temperature is lower than the set temperature, then it keeps the heater on, making the room warmer. If it’s the room temperature is the same or higher then it turns the heater off. so that it can maintain or cool the room.
+The heaters we use indoors use a negative feedback system. The heater heats up the room and uses the thermostat (sensor) to check the current temperature. If the room temperature is lower than the set temperature, then it keeps the heater on, making the room warmer. If it’s the room temperature is the same or higher then it turns the heater off. This is so that it can maintain or cool the room.
 \end{mdframed}
 \vspace*{\baselineskip}
 
