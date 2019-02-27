@@ -67,7 +67,6 @@ def standard_deviation():
 
 def debug_print(*args, **kwargs):
     '''Print debug messages to stderr.
-
     This shows up in the output panel in VS Code.
     '''
     print(*args, **kwargs, file=sys.stderr)
@@ -88,7 +87,6 @@ def set_cursor(state):
 
 def set_font(name):
     '''Sets the console font
-
     A full list of fonts can be found with `ls /usr/share/consolefonts`
     '''
     os.system('setfont ' + name)
@@ -135,26 +133,82 @@ def main():
     # mb.run_direct(duty_cycle_sp=sp)
     # mc.run_direct(duty_cycle_sp=sp)
     # time.sleep(0.)
-    for x in range(1, 1000):
-        time.sleep(0.01)
-        ds = us3.value()
-        # debug_print('Distance =',ds)
-        push(ds)
-        mean_current = mean()
-        variance_current = variance()
-        stdev = standard_deviation()
-        debug_print("Distance", ds)
-        debug_print("Mean", mean_current)
-        debug_print("Variance", variance_current)
-        debug_print("Standar Deviation", stdev)
+    # for x in range(1, 1000):
+    #     time.sleep(0.01)
+    #     ds = us3.value()
+    #     # debug_print('Distance =',ds)
+    #     push(ds)
+    #     mean_current = mean()
+    #     variance_current = variance()
+    #     stdev = standard_deviation()
+    #     debug_print("Distance", ds)
+    #     debug_print("Mean", mean_current)
+    #     debug_print("Variance", variance_current)
+    #     debug_print("Standar Deviation", stdev)
 
+    # mb.run_timed(time_sp=1, speed_sp=1000)
+    # mc.run_timed(time_sp=200000, speed_sp=1000)
+    # mb.run_direct(duty_cycle_sp=60)
+    # mc.run_direct(duty_cycle_sp=60)
+    # time.sleep(2.5)
+    # mb.run_direct(duty_cycle_sp=10)
+    # time.sleep(2)
+    # mb.run_direct(duty_cycle_sp=0)
+    # mc.run_direct(duty_cycle_sp=0)
+    
+
+    # question 4 open loop
+    # for x in range(1,4):
+    #     mb.run_direct(duty_cycle_sp=60)
+    #     mc.run_direct(duty_cycle_sp=60)
+    #     time.sleep(2.5)
+    #     mb.run_direct(duty_cycle_sp=10)
+    #     time.sleep(2)
     #     # stop
-    #     mb.run_direct(duty_cycle_sp=0)
-    #     mc.run_direct(duty_cycle_sp=0)
+    # mb.run_direct(duty_cycle_sp=0)
+    # mc.run_direct(duty_cycle_sp=0)
 
     #     # reverse direction
     #     sp = -sp
+    Kp = 1
+    Ki = 0             
+    Kd = 0                 
+    r = 500         
+    Tp = 25 
+    integral = 0 
+    lastError = 0                       
+    derivative = 0
+    b = ev3.UltrasonicSensor('in3')  
+    rafa = 0
 
+    error = r - (b.value())      
+    while rafa == 0:
+        integral = integral + error       
+        derivative = error - lastError    
+        Turn = Kp*error + Ki*integral + Kd*derivative 
+        Turn = Turn/100  
+        powerB = Tp + Turn               
+        powerC = Tp + Turn  
+        error = r - (b.value()) 
+        debug_print (error)        
+        debug_print ("Value of b",b.value())
+        # if error == 0:
+        #     mb.run_direct(duty_cycle_sp=0)
+        #     mc.run_direct(duty_cycle_sp=0) 
+        # else:
+        #     mb.run_direct(duty_cycle_sp=powerB)
+        #     mc.run_direct(duty_cycle_sp=powerC) 
+        #     debug_print("PowerB", powerB)
+        #     debug_print("PowerB", powerC)
+        if error > 0:
+            mb.run_direct(duty_cycle_sp=-(powerB))
+            mc.run_direct(duty_cycle_sp=-(powerC))
+        else:
+            mb.run_direct(duty_cycle_sp=(powerB))
+            mc.run_direct(duty_cycle_sp=(powerC))
+      
+
+    # lastError = error
     # # announce program end
     # ev3.Sound.speak('Test program ending').wait()
     # push(17.0)
