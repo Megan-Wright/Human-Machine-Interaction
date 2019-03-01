@@ -9,6 +9,7 @@ import sys
 import time
 import ev3dev.ev3 as ev3
 import math
+from time import sleep, time
 
 
 # state constants
@@ -170,7 +171,7 @@ def main():
 
     #     # reverse direction
     #     sp = -sp
-    Kp = 1
+    Kp = 50
     Ki = 0             
     Kd = 0                 
     r = 500         
@@ -180,9 +181,15 @@ def main():
     derivative = 0
     b = ev3.UltrasonicSensor('in3')  
     rafa = 0
-
-    error = r - (b.value())      
+    error = r - (b.value())
+ 
+    startTime = time()    
     while rafa == 0:
+        debug_print (round((time() - startTime) %20))
+        if round((time() - startTime) %20) == 0:
+            r = 500
+        elif round((time() - startTime) %10) == 0:
+            r = 300
         integral = integral + error       
         derivative = error - lastError    
         Turn = Kp*error + Ki*integral + Kd*derivative 
@@ -192,6 +199,30 @@ def main():
         error = r - (b.value()) 
         debug_print (error)        
         debug_print ("Value of b",b.value())
+            
+        if error > 0:
+            mb.run_direct(duty_cycle_sp=-(powerB))
+            mc.run_direct(duty_cycle_sp=-(powerC))
+        else:
+            mb.run_direct(duty_cycle_sp=(powerB))
+            mc.run_direct(duty_cycle_sp=(powerC))
+     
+            # integral = integral + error       
+            # derivative = error - lastError    
+            # Turn = Kp*error + Ki*integral + Kd*derivative 
+            # Turn = Turn/100  
+            # powerB = Tp + Turn               
+            # powerC = Tp + Turn  
+            # error = r - (b.value()) 
+            # debug_print (error)        
+            # debug_print ("Value of b",b.value())
+            
+            # if error > 0:
+            #     mb.run_direct(duty_cycle_sp=-(powerB))
+            #     mc.run_direct(duty_cycle_sp=-(powerC))
+            # else:
+            #     mb.run_direct(duty_cycle_sp=(powerB))
+            #     mc.run_direct(duty_cycle_sp=(powerC))
         # if error == 0:
         #     mb.run_direct(duty_cycle_sp=0)
         #     mc.run_direct(duty_cycle_sp=0) 
@@ -200,12 +231,10 @@ def main():
         #     mc.run_direct(duty_cycle_sp=powerC) 
         #     debug_print("PowerB", powerB)
         #     debug_print("PowerB", powerC)
-        if error > 0:
-            mb.run_direct(duty_cycle_sp=-(powerB))
-            mc.run_direct(duty_cycle_sp=-(powerC))
-        else:
-            mb.run_direct(duty_cycle_sp=(powerB))
-            mc.run_direct(duty_cycle_sp=(powerC))
+
+
+        #time.sleep(10)
+        
       
 
     # lastError = error
