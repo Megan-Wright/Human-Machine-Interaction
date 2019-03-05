@@ -354,12 +354,13 @@ Mean: 6.78 cm, 14.8 cm (second)
 
 {\bfseries Question \myq:}  \emph{In the above implementation, (i) how did you determine the control parameters for ensuring that the robot travelled the target distance and rotated the appropriate amount, (ii) how sensitive was it to the selected parameters, and (iii) how reliable was the best solution?} (Worth up to 4 marks)\\
 \begin{mdframed}
-i) We tried a method in the ev3dev documentation called run_timed, which can rotate the wheel by calculating time and speed, however it didn't work in the way we needed for this question.
+(i) We tried a method in the ev3dev documentation called run\_timed, which can rotate the wheel by calculating time and speed, however it didn't work in the way we needed for this question.
  So we implemented based on running the robot with motor speed and time.sleep. As we couldn't calculate the exact distance due to the delay in reaching the target speed we set, we tried multiple values to get 0.5m and 180 degrees. 
 After a few times of experiments we could get speed=60, time=2.5 for moving 0.5 m and speed 10 and 2 seconds for rotating 180 degrees.
 
-ii) Not very sensitive in the sense that a slight change in value doesn't make a noticeable difference. However, a drastic change in values would completely change the way the robot moves. 
-iii) Not very reliable, we can't find the exact metric of speed thus can't get an approximate calculation before we actually run the code, and so most of our testing was down to trial and error.
+(ii) Not very sensitive in the sense that a slight change in value doesn't make a noticeable difference. However, a drastic change in values would completely change the way the robot moves.  
+
+(iii) Not very reliable, we can't find the exact metric of speed thus can't get an approximate calculation before we actually run the code, and so most of our testing was down to trial and error.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -396,11 +397,11 @@ The heaters we use indoors use a negative feedback system. The heater heats up t
 
 {\bfseries Question \myq:}  \emph{Assuming that $K_I=0$ and $K_D=0$, what would happen to your example system if (i) $K_P=0$ or (ii) $K_P<0$?} (Worth up to 4 marks)\\
 \begin{mdframed}
-If $K_I=0$ and $K_D=0$ then the given formula will be the same as $u(t) = K_P e(t)$ it means that the control variable u(t) will depend on K_P and error value e(t).
+If $K_I=0$ and $K_D=0$ then the given formula will be the same as $u(t) = K_P e(t)$ it means that the control variable $u(t)$ will depend on $K_P$ and error value $e(t)$.
 
-i) K_P is proportional tuning, so it involves correcting a target proportional to the difference. If the difference of the target and sensed values is 0, then it wouldn’t perform tuning.
+(i) $K_P$ is proportional tuning, so it involves correcting a target proportional to the difference. If the difference of the target and sensed values is 0, then it wouldn't perform tuning.
 
-ii) It will make the u(t) value negative. A PID controller uses a negative feedback system. If the u(t) is negative, then it will make the system unstable. (This could lead to increasing oscillations and possible destruction of the mechanism.)
+(ii) It will make the $u(t)$ value negative. A PID controller uses a negative feedback system. If the $u(t)$ is negative, then it will make the system unstable. (This could lead to increasing oscillations and possible destruction of the mechanism.)
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -428,7 +429,7 @@ If all is well, then your robot should move slowly towards the surface slowing d
 
 {\bfseries Question \myq:}  \emph{What happens if, after the robot has arrived at the 50 cm point, you manually push it towards the surface?} (Worth up to 2 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+If we manually push the robot towards the surface, it goes backward. Similarly, if we place it further then it moves toward to get to the 50cm point again. To check the code and the sensor is working correctly, we put an obstacle right in front of the robot’s sensor when it was moving, and it went backward. When removed, it went forward. As the robot keeps getting the value from the sensor, it repeated this behaviour every time we put and remove the obstacle.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -436,7 +437,7 @@ Now implement an outer loop that swaps $r$ between 30 cm and 50 cm every 10 seco
 
 {\bfseries Question \myq:}  \emph{With $K_I=0$ and $K_D=0$, what happens when you experiment with different values of $K_P$?  In particular, (i) what is a `good' value for $K_P$ (and why), (ii) what value of $K_P$ causes the robot to start to oscillate continuously backwards and forwards around the target $r$, and (iii) when it starts to oscillate continuously, what is the oscillation period?  Hint: start with $K_P =1$, then increase it gradually.} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+(i) Good value for $K_p$ is the value that could stabilise the robot in a short time and shouldn't be too high or too low. We placed the robot about 20cm away from the wall. When we had 20 and 50 for $K_p$ value, it went backward in very high velocity, missing the exact point. When we had 0 or 0.5 for the $K_p$ value, it took longer to get the right point than we had the good value for $K_p$. In our case, when we had 7 for $K_p$ value, it found the exact 500 and 300 point within 5 seconds.
 \end{mdframed}
 \vspace*{\baselineskip}
 
