@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 '''COM2009-3009 EV3DEV TEST PROGRAM'''
 
 # Connect left motor to Output C and right motor to Output B
@@ -102,13 +102,13 @@ def main():
     set_font('Lat15-Terminus24x12')
 
     # display something on the screen of the device
-    print('Hello World!')
+    # print('Hello World!')
 
     # print something to the output panel in VS Code
     debug_print('Hello VS Code!')
 
     # announce program start
-    ev3.Sound.speak('Test program starting!').wait()
+    # ev3.Sound.speak('Test program starting!').wait()
 
     # set the motor variables
     mb = ev3.LargeMotor('outB')
@@ -156,7 +156,6 @@ def main():
     # time.sleep(2)
     # mb.run_direct(duty_cycle_sp=0)
     # mc.run_direct(duty_cycle_sp=0)
-    
 
     # question 4 open loop
     # for x in range(1,4):
@@ -172,51 +171,51 @@ def main():
     #     # reverse direction
     #     sp = -sp
     Kp = 50
-    Ki = 0             
-    Kd = 0                 
-    r = 500         
-    Tp = 25 
-    integral = 0 
-    lastError = 0                       
+    Ki = 0
+    Kd = 0
+    r = 500
+    Tp = 25
+    integral = 0
+    lastError = 0
     derivative = 0
-    b = ev3.UltrasonicSensor('in3')  
+    b = ev3.UltrasonicSensor('in3')
     rafa = 0
     error = r - (b.value())
- 
-    startTime = time()    
+
+    startTime = time()
     while rafa == 0:
-        debug_print (round((time() - startTime) %20))
-        if round((time() - startTime) %20) == 0:
+        debug_print(round((time() - startTime) % 20))
+        if round((time() - startTime) % 20) == 0:
             r = 500
-        elif round((time() - startTime) %10) == 0:
+        elif round((time() - startTime) % 10) == 0:
             r = 300
-        integral = integral + error       
-        derivative = error - lastError    
-        Turn = Kp*error + Ki*integral + Kd*derivative 
-        Turn = Turn/100  
-        powerB = Tp + Turn               
-        powerC = Tp + Turn  
-        error = r - (b.value()) 
-        debug_print (error)        
-        debug_print ("Value of b",b.value())
-            
+        integral = integral + error
+        derivative = error - lastError
+        Turn = Kp*error + Ki*integral + Kd*derivative
+        Turn = Turn/100
+        powerB = Tp + Turn
+        powerC = Tp + Turn
+        error = r - (b.value())
+        debug_print(error)
+        debug_print("Value of b", b.value())
+
         if error > 0:
             mb.run_direct(duty_cycle_sp=-(powerB))
             mc.run_direct(duty_cycle_sp=-(powerC))
         else:
             mb.run_direct(duty_cycle_sp=(powerB))
             mc.run_direct(duty_cycle_sp=(powerC))
-     
-            # integral = integral + error       
-            # derivative = error - lastError    
-            # Turn = Kp*error + Ki*integral + Kd*derivative 
-            # Turn = Turn/100  
-            # powerB = Tp + Turn               
-            # powerC = Tp + Turn  
-            # error = r - (b.value()) 
-            # debug_print (error)        
+
+            # integral = integral + error
+            # derivative = error - lastError
+            # Turn = Kp*error + Ki*integral + Kd*derivative
+            # Turn = Turn/100
+            # powerB = Tp + Turn
+            # powerC = Tp + Turn
+            # error = r - (b.value())
+            # debug_print (error)
             # debug_print ("Value of b",b.value())
-            
+
             # if error > 0:
             #     mb.run_direct(duty_cycle_sp=-(powerB))
             #     mc.run_direct(duty_cycle_sp=-(powerC))
@@ -225,17 +224,14 @@ def main():
             #     mc.run_direct(duty_cycle_sp=(powerC))
         # if error == 0:
         #     mb.run_direct(duty_cycle_sp=0)
-        #     mc.run_direct(duty_cycle_sp=0) 
+        #     mc.run_direct(duty_cycle_sp=0)
         # else:
         #     mb.run_direct(duty_cycle_sp=powerB)
-        #     mc.run_direct(duty_cycle_sp=powerC) 
+        #     mc.run_direct(duty_cycle_sp=powerC)
         #     debug_print("PowerB", powerB)
         #     debug_print("PowerB", powerC)
 
-
-        #time.sleep(10)
-        
-      
+        # time.sleep(10)
 
     # lastError = error
     # # announce program end
