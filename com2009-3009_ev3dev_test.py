@@ -125,7 +125,7 @@ def select_controller(mode):
     if mode == "P":
         print("Running in P mode")
         # Mulitply Kp by 100 to use decimal points
-        Kp = 0.6*100
+        Kp = 0.6*100*Ku
         # Proportional for the Integral
         Ki = 0
         # Proportional for the derivative
