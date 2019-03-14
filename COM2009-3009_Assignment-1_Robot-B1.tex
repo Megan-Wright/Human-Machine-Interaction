@@ -409,17 +409,21 @@
 	\begin{center}
 		\includegraphics[scale=0.5]{53184576_2330450700571615_6653254334093983744_n.jpg}
 	\end{center}
-		The heaters we use indoors use a negative feedback system. The heater heats up the room and uses the thermostat (sensor) to check the current temperature. If the room temperature is lower than the set temperature, then it keeps the heater on, making the room warmer. If it’s the room temperature is the same or higher then it turns the heater off. This is so that it can maintain or cool the room.
+		The heaters we use indoors use a negative feedback system. The heater heats up the room and uses the thermostat (sensor) to check the current temperature. If the room temperature is lower than the set temperature, then it keeps the heater on, making the room warmer. If it’s the room temperature is the same or higher then it turns the heater off. This is so that it can maintain or cool the room. A Heater is an example of negative-feedback control system because it tends to reduce the fluctuation in temperature. By this controlling system, we can keep the room around the temperature we want.
 	\end{mdframed}
 	\vspace*{\baselineskip}
 	
 	{\bfseries Question \myq:}  \emph{Assuming that $K_I=0$ and $K_D=0$, what would happen to your example system if (i) $K_P=0$ or (ii) $K_P<0$?} (Worth up to 4 marks)\\
 	\begin{mdframed}
-		If $K_I=0$ and $K_D=0$ then the given formula will be the same as $u(t) = K_P e(t)$. It means that the control variable $u(t)$ will depend on $K_P$ and error value $e(t)$.
+		If $K_I=0$ and $K_D=0$ then the given formula will be the same as $u(t) = K_P e(t)$. It means that the control variable $u(t)$ will depend on $K_P$ and error value $e(t)$.\\
 		
-		(i) $K_P$ is proportional tuning, so it involves correcting a target proportional to the difference. If the difference of the target and sensed values is 0, then it wouldn't perform tuning.
+		(i) When $K_P=0$
+		\begin{center}$u(t)=0$\end{center}
+		$K_P$ is proportional tuning, so it involves correcting a target proportional to the difference. If the difference of the target and sensed values is 0, then it wouldn't perform tuning.\\
 		
-		(ii) It will make the $u(t)$ value negative. A PID controller uses a negative feedback system. If the $u(t)$ is negative, then it will make the system unstable. (This could lead to increasing oscillations and possible destruction of the mechanism.)
+		(ii) When $K_P<0$
+		\begin{center}$u(t)=K_P e(t)$\end{center}
+		It will make the $u(t)$ value negative. As a PID controller uses a negative feedback system, if the $u(t)$ is negative, then it will make the system unstable. (This could lead to increasing oscillations and possible destruction of the mechanism.)
 	\end{mdframed}
 	\vspace*{\baselineskip}
 	
