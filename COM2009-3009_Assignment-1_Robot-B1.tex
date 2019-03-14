@@ -595,15 +595,19 @@ Replace this text with your answer.  Replace this text with your answer.  Replac
 
 {\bfseries Question \myq:}  \emph{What was your robot's final physical configuration (include a photo)?} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
-\\ \\	\includegraphics[width=\textwidth]{maze-photo.jpg}\\
-\centerline{(This is a photo of a possible maze.  Replace it with a photo of your robot.)}
+\begin{center}
+	\includegraphics[width=\textwidth]{20190314_160457.jpg}
+\end{center}
+\begin{center}
+	\includegraphics[width=\textwidth]{20190314_160441.jpg}
+\end{center}
+We decided to put the sensors to face the wall $45^{\circ}$. We thought about placing the sensor horizontally to the wall. However, because it gets the value from the wall right next to the robot, it would crash into the wall when the sharp curve is upcoming, as it can't predict the distance from the wall ahead. By placing the sensor in $45^{\circ}$, the robot was able to check the distance from the upcoming wall, predicting whether it is curved or not. Other than that, we kept our robot's design simple, trying to use the minimum amount of the blocks. We felt if the sensor is connected to more complex structure, it is easier to get shaken, resulting in unstable reading.
 \end{mdframed}
 \vspace*{\baselineskip}
 
 {\bfseries Question \myq:}  \emph{Are there any points you wish to make about your robot's performance in the competition?  For example, if you had had more time, what might you have done differently?} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+We didn't have enough time to run the robot in the maze and when we could, there were too many robots in the arena, so the sensor values were different every time we ran the code. There were some values which could finish the maze without touching the wall but we weren't able to check several times and implement the values we got. If we had more time, we want to check the sensor values thoroughly and set more precise sensor value range or PID values for the robot. Also, we want to try differnt PID tuning methods. As told in the instruction, we used Ziegler-Nichols method when calculating the PID values. However, it would have been better if we could have experimented with another methods, such as Cohen-Coon parameters or Relay (Astrom-Hagglund) method to check which gives the best result for the maze running.
 \end{mdframed}
 \vspace*{\baselineskip}
 
