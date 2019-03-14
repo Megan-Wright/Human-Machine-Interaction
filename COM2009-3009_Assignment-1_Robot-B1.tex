@@ -598,7 +598,39 @@
 	
 	{\bfseries Question \myq:}  \emph{In terms of your robot's software architecture, what principles did you explore, and what was the final approach taken?} (Worth up to 15 marks)\\
 	\begin{mdframed}
-		Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+	Software structure based in a theoretical analyse of PID; the group created three different functions (P, PI and PID) represented not in code but comments of the theory behind each function. Therefore, each line consisted of a comment explaining what the code that was supposed to be there should do and why.
+This method of development showed way more effective than writing code blinded; it gave a better understanding of every member of the group. After ensuring that everyone knew the works behind PID, the group started coding:
+
+First result: based in proportional (only P used), getting the values from the ultrasonic sensor and creating an offset which consisted of the mean of both values (left sensor and right sensor) and calculating the new velocity for each motor. Testing P with universal values for the offset worked pretty well. However, the team wanted to find a better way to get the best values for Kp and Ku; most groups were changing the values of Kp and checking when the robot started to oscillate by seen it. Which isn't the worst way to do it, but is not the best way neither, therefore, some python code was used to get all the values that the function returned (velocity of the motors) and write in a text file with the time taken next to it. From the generated text file, a graphical interface was created, showing when the Kp would oscillate mostly and getting the value for Ku. 
+However, because of the lack of time and some internal errors from the hardware side, the group couldn't try a lot of Kp values, almost none. So it was decided to keep the original values given by the assignment (without time being spent fixing hardware problems and changing more than four times of robot, a more suitable value would be used for Ku - explanation in question 16).
+
+Second result: the group wrote a function for PI.
+
+Third result: the third version of the code was writing the full PID. The group had already the P and I so it was just missing the derivative which did not take long to be implemented.
+Fourth result: A function was created to change in between P, PI and PID being able to test way more comfortable and faster the difference between them. Also, implemented a condition that when the error is tiny (probably the robot is in the middle of two walls), the robot will run at full speed.
+
+In the end, because of lack of time, the group had the chance to try the whole code only during one section (drop-in section). Not having much time to test each value, the group decided to stick only with the proportional (P) which was easier to check and faster to get into a "working" solution for the competition. A full diagram of the code can be seen below:
+		\begin{center}
+			\includegraphics[width=\textwidth]{NDA.png}
+		\end{center}
+		\begin{huge}
+			\begin{center}
+				Zoomed in pictures:
+			\end{center}
+		\end{huge}
+		\begin{center}
+			\includegraphics[width=\textwidth]{NDA1.png}
+		\end{center}
+		\begin{center}
+			\includegraphics[width=\textwidth]{NDA2.png}
+		\end{center}
+		\begin{center}
+			\includegraphics[width=\textwidth]{NDA3.png}
+		\end{center}
+		\begin{center}
+			\includegraphics[width=\textwidth]{NDA4.png}
+		\end{center}
+		
 	\end{mdframed}
 	\vspace*{\baselineskip}
 	
