@@ -328,16 +328,31 @@ The example program - \texttt{com2009-3009\_ev3dev\_test.py} - shows how to read
 
 {\bfseries Question \myq:}  \emph{How do the mean, standard deviation, minimum and maximum values from the ultrasonic sensor vary as a function of the \underline{actual} distance to a surface?} (Worth up to 4 marks)\\
 \begin{mdframed}
-As the the number of samples increase the standard deviation starts decreasing towards zero. The final standard deviation value after a thousand samples is 0.00504 mm. However, the mean starts increasing towards a more consistent value, if analysed the real value which is 15 cm to the final mean after a thousand samples which is 14.8 cm it will all differ by 1.2 cm which for the experiment and type of application that the robot will be used for, is plausible. The minimum mean value differ by 9 to the real value and the maximum will differ by 1.
-  \end{mdframed}
+\begin{center}
+	\begin{tabular}{ | c | c | c | c | c |} \hline
+		 & \bf{Mean} & \bf{Standard Variation} & \bf{Maximum} & \bf{Minimum} \\ \hline
+		\bf{$10cm$} & 104.6 & 0.117 & 101 & 101 \\ \hline
+		\bf{$15cm$} & 148 & 0.005 & 151 & 149 \\ \hline
+		\bf{$20cm$} & 204.4 & 0.081 & 207 & 204 \\ \hline
+		\bf{$30cm$} & 302.2 & 0.028 & 320 & 302 \\ \hline
+	\end{tabular}
+\end{center}
+We wrote the code to calculate mean, standard variation every time the robot gets new value. We could see the standard deviation starts decreasing towards to 0, and the mean starts increasing towards a more consistent value, which is close to the real value. We observed that the more the sensor is close to the wall, it gives more stable values considering the minimum and maximum.
+\end{mdframed}
 \vspace*{\baselineskip}
 
 {\bfseries Question \myq:}  \emph{How do the mean, standard deviation, minimum and maximum values from the ultrasonic sensor vary as a function of surface angle?} (Worth up to 4 marks)\\
 \begin{mdframed}
-Taking in an account a comparison between the first experiment and this one, it can clearly be seen that as the surface angle changes the and accuracy of the distance will decrease because the sensor won't be able to calculate an exact distance. Therefore, the best way to calculate the distance between the robot and a wall is to keep the robot 90 degrees surface angle from the wall. That is for a better precision. 
-Comparison between experiments with same straight distance between the robot and the wall:
-Standard deviation: 0.005, 0.08 (second)
-Mean: 6.78 cm, 14.8 cm (second)
+\begin{center}
+	\begin{tabular}{ | c | c | c | c | c |} \hline
+		 & \bf{Mean} & \bf{Standard Variation} & \bf{Maximum} & \bf{Minimum} \\ \hline
+		\bf{$30^{\circ}, 25cm$} & 325.289 & 0.028 & 326 & 267 \\ \hline
+		\bf{$45^{\circ}, 25cm$} & 471.716 & 0.061 & 475 & 471 \\ \hline
+		\bf{$60^{\circ}, 25cm$} & 516.833 & 0.055 & 519 & 514 \\ \hline
+		\bf{$90^{\circ}, 25cm$} & 247.403 & 0.013 & 251 & 243 \\ \hline
+	\end{tabular}
+\end{center}
+By experimenting with different angles from $30^{\circ}$ to $90^{\circ}$, it can clearly be seen that as the surface angle changes the and accuracy of the distance will decrease because the sensor won't be able to calculate an exact distance. Therefore, the best way to calculate the distance between the robot and a wall is to keep the robot 90 degrees surface angle from the wall to get more precise result.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -597,7 +612,7 @@ Replace this text with your answer.  Replace this text with your answer.  Replac
 \begin{center}
 	\begin{tabular}{ |c|c|c|c|c| } \hline
 		 \bf{Distance} & \bf{Time} & \bf{Wall Touches} & \bf{Rescues} \\ \hline
-		end reached/? metres & 00:00 & 0/1/2/\ldots & 0/1/2/\ldots \\ \hline
+		end reached Yes/ metres & 01:56 & 2 & 2 \\ \hline
 	\end{tabular}
 \end{center}
 \end{mdframed}
@@ -609,9 +624,9 @@ Finally, how did you organise your team?  I.e.\ what was each member's role and 
 \begin{center}
 	\begin{tabular}{ | c | p{8cm} | c | } \hline
 		 \bf{Team Member} & \bf{Role} & \% \\ \hline
-		? & ? & ? \\ \hline
-		? & ? & ? \\ \hline
-		? & ? & ? \\ \hline
+		Megan Wright & report, experiment & 33.3 \\ \hline
+		Rafael Cavagnoli & maze, experiment & 33.3 \\ \hline
+	    	Sohyun Park  & report, experiment & 33.3 \\ \hline
 	\end{tabular}
 \end{center}
 
