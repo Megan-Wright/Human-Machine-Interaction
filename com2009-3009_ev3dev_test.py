@@ -175,9 +175,6 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # turns (corrections) are gentle.
     Tp = 50
 
-    # Starting the loop>>>>>>
-    # Remove late
-    error = 0
     # This has to read from the robot's left sensor
     error_left = left_sensor - offset
     # This has to read from the robot's left sensor
@@ -186,8 +183,8 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # variable, giving the controller a method to reduce errors over time
     # Another way to don't make the integral to get too big is to do times
     # 2/3, making the integral forget about long term errors
-    integral_left = ((2/3)*integral_left) + error_left
-    integral_right = ((2/3)*integral_right) + error_right
+    integral_left = (integral_left) + error_left
+    integral_right = (integral_right) + error_right
     # The derivative that tries to see the future error
     derivative_left = error_left - last_error_left
     derivative_right = error_right - last_error_right
@@ -203,6 +200,7 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # Save the last error to be the next error
     last_error_left = error_left
     last_error_right = error_right
+
     # Check the maximum and minimum power that can be sent to the robot
     # Also check if the motor can receive a negative power
     # Also double check by how far both motors go from a 100
@@ -222,13 +220,15 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # if error == 0:
     #     integral = 0
     # debug_print(error)
+    # error =
 
     # Return the powers of the robots
-    if error >= 0.5 or error <= 0.5:
-        return power_left, power_right
+    if (error_left <= 3 and error_left >= -3) and (error_right <= 3 and error_right >= -3):
+        debug_print("Full speed")
+
+        return 90, 90
     else:
-        return 0, 0
-    # debug_print(error)
+        return power_left, power_right
 
 
 def main():
@@ -252,12 +252,13 @@ def main():
     mb = ev3.LargeMotor('outB')
     mc = ev3.LargeMotor('outD')
 
+    # set the ultrasonic sensor variable
+    left_sensor = ev3.UltrasonicSensor('in1')
+    right_sensor = ev3.UltrasonicSensor('in4')
+
     while True:
-        time.sleep(0.01)
-        # set the ultrasonic sensor variable
-        left_sensor = ev3.UltrasonicSensor('in1')
-        right_sensor = ev3.UltrasonicSensor('in4')
-        power_left, power_right = calculate_pid(left_sensor.value(), right_sensor.value(), "PID")
+        time.sleep(0.005)
+        power_left, power_right = calculate_pid(left_sensor.value(), right_sensor.value(), "P")
         # Give power to the motors
         debug_print("Power Left="+str(power_left) + "Power Right="+str(power_right))
         mb.run_direct(duty_cycle_sp=(power_left))

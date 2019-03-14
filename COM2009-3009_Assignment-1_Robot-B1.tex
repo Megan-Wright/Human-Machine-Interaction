@@ -439,7 +439,9 @@ Now implement an outer loop that swaps $r$ between 30 cm and 50 cm every 10 seco
 \begin{mdframed}
 We have tried when $K_P$ is 0, 0,5, 1, 5, 7, 10, 20, 50.
 
-(i) Good value for $K_P$ is the value that could stabilise the robot in a short time and shouldn't be too high or too low. We placed the robot about 20cm away from the wall. When we had 20 and 50 for $K_P$ value, it went backward in very high velocity, missing the exact point. When we had 0 or 0.5 for the $K_P$ value, it took longer to get the right point than we had the good value for $K_P$. In our case, when we had 5 for $K_P$ value, it found the exact 500 and 300 point within 5 seconds.
+(i) A good value for $K_P$ is the value that could stabilise the robot in a short time. We placed the robot about 30cm away from the wall. When we had 30 and 50 for $K_P$ value, it went backward in very high velocity, missing the exact point. When we had 0 or 0.5 for the $K_P$ value, it took longer to get the right point than we had the good value for $K_P$. In our case, when we had 5 for $K_P$ value, it found the exact 500 and 300 point within 5 seconds, and so we have chosen this as our value for $K_P$.
+(ii) We have found that any  $K_P$  value below 10 causes the robot to oscillate around the target point.
+(iii) The oscillation period we have found is 0.5 seconds
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -450,8 +452,8 @@ The value of $K_P$ that causes the robot to oscillate backwards and forwards con
 {\bfseries Question \myq:}  \emph{What is the relationship between the `good' value of $K_P$ that you discovered by experimentation and the value of $K_U$ that you measured?} (Worth up to 5 marks)\\
 \begin{mdframed}
 
-The oscillation starts to happen when Ku is smaller than 10, if it is higher than 10 doesnt oscillate
-It does oscillate by 1.5 times/second
+The oscillation starts to happen when Ku is smaller than 10. If Ku is higher than 10 it doesnt oscillate.
+It's oscillation frequency 2 times/second, and so the relationship between these is that Kt is 1/5 Ku.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -473,7 +475,7 @@ A more formal tuning approach is known as the \emph{Ziegler-Nichols} method.  On
 
 {\bfseries Question \myq:}  \emph{What values of $K_P$, $K_I$ and $K_D$ are given by the Ziegler-Nichols method for a P, PI and PID controller (based on the values of $K_U$ and $T_U$ you measured previously)?} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+For a P controller we have: 
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -483,7 +485,7 @@ Replace this text with your answer.  Replace this text with your answer.  Replac
 
 {\bfseries Question \myq:}  \emph{Using the values for $K_P$, $K_I$ and $K_D$ given by the Ziegler-Nichols method, what happens when you decrease the sampling rate (e.g.\ by changing the value of the `wait' function in the loop)?  What is the significance of your observations?} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+When the sampling rate is decreased, the period of oscillation of the robot around the target point increases. The robot also travels further awa from the target before correcting its position, as there is a longer time between sampling and so it takes longer to sense that it is not in the correct place.
 \end{mdframed}
 \vspace*{\baselineskip}
 
@@ -498,7 +500,11 @@ Now re-program your robot with a PID controller that maintains a fixed distance 
 
 {\bfseries Question \myq:}  \emph{What values for $K_U$ and $T_U$ did you measure, and what are the resulting values for $K_P$, $K_I$ and $K_D$  given by the Ziegler-Nichols method?} (Worth up to 5 marks)\\
 \begin{mdframed}
-Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.  Replace this text with your answer.
+$K_U$ = 5
+$T_U$ = 1/2
+$K_P$ = 3
+$K_I$  = 12
+$K_D$  = 0.1875
 \end{mdframed}
 \vspace*{\baselineskip}
 
