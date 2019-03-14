@@ -1,19 +1,24 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 '''COM2009-3009 EV3DEV TEST PROGRAM'''
 
 # Connect left motor to Output C and right motor to Output B
 # Connect an ultrasonic sensor to Input 3
-import math
-import matplotlib.pyplot as plt
-from matplotlib import style
-import time
-import numpy as np
-import random
+
 import os
+import sys
+import time
+import ev3dev.ev3 as ev3
+import math
+# import random
+# import matplotlib.pyplot as plt
+# from matplotlib import style
+# import time
+# import numpy as np
 
 
 # Global Variables
-
+ON = True
+OFF = False
 m_n = 0
 m_oldM = 0
 m_newM = 0
@@ -25,8 +30,8 @@ last_error_left = 0
 last_error_right = 0
 derivative_left = 0
 derivative_right = 0
-start_time = time.time()
-end_time = time.time()
+# start_time = time.time()
+# end_time = time.time()
 
 
 class RunningStats:
@@ -84,42 +89,33 @@ class RunningStats:
             return 0.0
 
 
-def create_file(light_sensor_left, light_sensor_right, offset):
-    global start_time, end_time
+# Professors Code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    # Create the time variable
-    end_time = time.time()
-    # Calculate the necessary time to get the values from the light sensor
-    time_taken = end_time - start_time
-
-    l = open("robot_left.txt", "a+")
-    r = open("robot_right.txt", "a+")
-    d = open("offset.txt", "a+")
-    string_value_left = str("%.2f" % time_taken)+"," + str(light_sensor_left)+"\n"
-    l.write(string_value_left)
-    string_value_right = str("%.2f" % time_taken)+"," + str(light_sensor_right)+"\n"
-    r.write(string_value_right)
-    d.write(str(offset)+"\n")
-    r.close
-    l.close
-    d.close
+def debug_print(*args, **kwargs):
+    '''Print debug messages to stderr.
+    This shows up in the output panel in VS Code.
+    '''
+    print(*args, **kwargs, file=sys.stderr)
 
 
-def create_graphic():
-    x, y_right = np.loadtxt('robot_right.txt', delimiter=',', unpack=True)
-    x, y_left = np.loadtxt('robot_left.txt', delimiter=',', unpack=True)
-    d = np.loadtxt('offset.txt', unpack=True)
+def reset_console():
+    '''Resets the console to the default state'''
+    print('\x1Bc', end='')
 
-    # Creats a graph on it
-    style.use('fivethirtyeight')
-    fig = plt.figure()
-    ax1 = fig.add_subplot(1, 1, 1)
-    plt.xlabel("Time(s)")
-    plt.ylabel("Light Sensor Value")
-    ax1.plot(x, y_right, linestyle='', marker="o")
-    ax1.plot(x, y_left, linestyle='', marker="x")
-    ax1.plot(x, d)
-    plt.show()
+
+def set_cursor(state):
+    '''Turn the cursor on or off'''
+    if state:
+        print('\x1B[?25h', end='')
+    else:
+        print('\x1B[?25l', end='')
+
+
+def set_font(name):
+    '''Sets the console font
+    A full list of fonts can be found with `ls /usr/share/consolefonts`
+    '''
+    os.system('setfont ' + name)
 
 
 def select_controller(mode):
@@ -144,7 +140,7 @@ def select_controller(mode):
         # Proportional for the derivative
         Kd = 0
         return Kp, Ki, Kd
-    else:
+    elif mode == "PID":
         print("Running in PID mode")
         # Mulitply Kp by 100 to use decimal points
         Kp = 0.6*100*Ku
@@ -180,7 +176,8 @@ def calculate_pid(left_sensor, right_sensor, mode):
     Tp = 50
 
     # Starting the loop>>>>>>
-
+    # Remove late
+    error = 0
     # This has to read from the robot's left sensor
     error_left = left_sensor - offset
     # This has to read from the robot's left sensor
@@ -199,8 +196,6 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # Divide velocity by 100 to decrease from the Kp from before
     velocity_p_left = ((error_left*Kp)+(integral_left*Ki)+(derivative_left*Kd))/100
     velocity_p_right = ((error_right*Kp)+(integral_right*Ki)+(derivative_right*Kd))/100
-    print(velocity_p_left)
-    print(velocity_p_right)
     # Those are the powers that will be suplied to the motors
     power_right = velocity_p_right + Tp
     power_left = velocity_p_left + Tp
@@ -229,37 +224,45 @@ def calculate_pid(left_sensor, right_sensor, mode):
     # debug_print(error)
 
     # Return the powers of the robots
-    # if error >= 0.5 or error <= 0.5:
-    return power_left, power_right
-    # else:
-    # return 0, 0
+    if error >= 0.5 or error <= 0.5:
+        return power_left, power_right
+    else:
+        return 0, 0
     # debug_print(error)
 
 
-def test_no_robot():
-    value = 0
-    while value <= 100:
-        random_number_left = (random.randrange(400, 1000, 1)/10)
-        random_number_right = (random.randrange(400, 1000, 1)/10)
-        power = calculate_pid(45, 33, "P")
-        create_file(power[0], power[1], 50)
-        print("Power Left", power[0])
-        print("Power Right", power[1])
-        value = value + 1
-    # create_graphic()
-    # power = calculate_pid(10, 10, "PID")
-    # print("Power Left", power[0])
-    # print("Power Right", power[1])
-    # os.remove("offset.txt")
-
-
 def main():
-    test_no_robot()
-    # rs=RunningStats()
-    #
-    # print(rs.mean())
-    # print(rs.variance())
-    # print(rs.standard_deviation())
+    '''The main function of our program'''
+
+    # set the console just how we want it
+    reset_console()
+    set_cursor(OFF)
+    set_font('Lat15-Terminus24x12')
+
+    # display something on the screen of the device
+    print('Best Robot 2019')
+
+    # print something to the output panel in VS Code
+    debug_print('Good evening')
+
+    # announce program start
+    ev3.Sound.speak('Program Starting').wait()
+
+    # set the motor variables
+    mb = ev3.LargeMotor('outB')
+    mc = ev3.LargeMotor('outD')
+
+    while True:
+        time.sleep(0.01)
+        # set the ultrasonic sensor variable
+        left_sensor = ev3.UltrasonicSensor('in1')
+        right_sensor = ev3.UltrasonicSensor('in4')
+        power_left, power_right = calculate_pid(left_sensor.value(), right_sensor.value(), "PID")
+        # Give power to the motors
+        debug_print("Power Left="+str(power_left) + "Power Right="+str(power_right))
+        mb.run_direct(duty_cycle_sp=(power_left))
+        mc.run_direct(duty_cycle_sp=(power_right))
 
 
-main()
+if __name__ == '__main__':
+    main()
